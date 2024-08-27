@@ -1,0 +1,135 @@
+/* @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Code+Latin:wght@100..700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+Mono+TC&family=M+PLUS+Code+Latin:wght@100..700&display=swap');
+
+.font {
+  /* font-family: 'M PLUS Code Latin', monospace; */
+  font-family: 'LXGW WenKai Mono TC', monospace;
+  font-optical-sizing: auto;
+}
+
+.container {
+  gap: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
+.group {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+
+.label {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.36rem;
+  background-color: #a6dbdb99;
+  color: #000;
+}
+
+.label.error {
+  background-color: #f33;
+  color: #fff;
+}
+
+.button {
+  flex: 1;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.48rem;
+  background-color: #a6dbdb;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.preview-panel {
+  display: flex;
+  position: fixed;
+  right: -960px;
+  width: 960px;
+  top: 0;
+  bottom: 0;
+  padding: 1.6rem;
+  max-width: 100%;
+  background-color: #0336;
+  box-shadow: 0 0 10px 0 #0002;
+  backdrop-filter: blur(10px);
+  z-index: 99999;
+  box-sizing: border-box;
+  overflow: auto;
+  transition: right 0.3s ease;
+}
+
+.preview-panel.active {
+  right: 0;
+}
+
+.preview-panel .body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.4rem;
+  background-color: #fffc;
+  border-radius: 0.6rem;
+}
+
+.preview-panel .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.preview-panel .header .title {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.preview-panel .header .close {
+}
+
+.preview-panel #video-id {
+  margin-left: 1rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  font-family: monospace;
+}
+
+.preview-panel .content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 1rem;
+  margin-top: 1rem;
+  overflow-y: auto;
+}
+
+.preview-panel .content .caption {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.preview-panel .content .caption .caption-item {
+  font-family: monospace;
+  font-size: 1.3rem;
+  border-radius: 0.56rem;
+  padding: 0.4rem 0.8rem;
+  background-color: #fffc;
+  font-weight: 500;
+  min-width: 56px;
+  text-align: right;
+}
+
+.preview-panel .content .caption .caption-text {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.hidden {
+  display: none;
+}
