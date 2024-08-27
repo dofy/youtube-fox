@@ -29,7 +29,7 @@ export const Content: React.FC<ContentProps> = ({ videoId, openPreviewPanel }) =
   return (
     <div className="container">
       <div className="group">
-        <div className="label">{videoId}</div>
+        <div className="label">ID: {videoId}</div>
         <div id={`error-${videoId}`} className="label error hidden">
           No Captions
         </div>
