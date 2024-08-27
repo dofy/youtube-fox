@@ -1,3 +1,61 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+}
+
+label {
+  padding: 0.5rem 1rem 0;
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+input {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-bottom: 1px solid #c7ecee;
+  border-radius: 0.36rem;
+  width: 100%;
+}
+
+input:focus {
+  outline: none;
+  border-bottom: 1px solid #686de0;
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.36rem;
+  background-color: #c7ecee;
+  color: black;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.form-control {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+}

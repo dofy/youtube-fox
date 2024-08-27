@@ -1,11 +1,16 @@
-import { Button } from '@chakra-ui/react'
 import '/global.css'
 
-export const Content = () => {
+interface ContentProps {
+  videoId: string
+  videoTitle: string
+}
+
+export const Content: React.FC<ContentProps> = ({ videoId, videoTitle }) => {
   return (
     <div className="flex gap-2 items-center">
       <div className="bg-blue-100 rounded-md py-2 px-4">YouTube</div>
-      <div className="p-4">Get Captions</div>
+      <div>{videoId}</div>
+      <div>{videoTitle}</div>
     </div>
   )
 }
