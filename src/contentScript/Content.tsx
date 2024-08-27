@@ -10,7 +10,7 @@ export const Content: React.FC<ContentProps> = ({ videoId, openPreviewPanel }) =
   let captions: Caption[] = []
 
   const fetchCaptions = async (videoId: string) => {
-    captions = await getCaptions(videoId, { lang: 'zh' })
+    captions = await getCaptions(videoId)
 
     if (captions.length === 0) {
       const error = document.getElementById(`error-${videoId}`)
