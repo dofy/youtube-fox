@@ -7,16 +7,17 @@ interface ContentProps {
 }
 
 export const Content: React.FC<ContentProps> = ({ videoId, openPreviewPanel }) => {
-  let captions: Caption[] = []
+  const captions: Caption[] = []
 
   const fetchCaptions = async (videoId: string) => {
-    captions = await getCaptions(videoId)
-
-    if (captions.length === 0) {
+    const captionsData = await getCaptions(videoId)
+    if (captionsData.length === 0) {
       const error = document.getElementById(`error-${videoId}`)
       error?.classList.remove('hidden')
       const buttons = document.getElementById(`buttons-${videoId}`)
       buttons?.classList.add('hidden')
+    } else {
+      captions.push(...captionsData)
     }
   }
 

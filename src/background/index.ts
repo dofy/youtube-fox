@@ -1,7 +1,13 @@
-console.log('background is running')
-
-chrome.runtime.onMessage.addListener((request) => {
-  if (request.type === 'COUNT') {
-    console.log('background has received a message from popup, and count is ', request?.count)
+chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
+  switch (request.type) {
+    case 'getOptions':
+      chrome.storage.sync.get(['options'], (result) => {
+        sendResponse({ message: 'getOptions', options: result.options })
+      })
+      break
+    default:
+      sendResponse({ message: 'unknown request' })
+      break
   }
+  return true
 })

@@ -10,7 +10,6 @@ const defaultOptions = {
   bucketName: '',
   systemPrompt: DEFAULT_SYSTEM_PROMPT,
   prompt: DEFAULT_PROMPT,
-  version: '1.0.0',
 }
 
 export const Options = () => {
