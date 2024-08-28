@@ -92,7 +92,7 @@
 .preview-panel .header .close {
 }
 
-.preview-panel #video-id {
+.preview-panel .video-id {
   margin-left: 1rem;
   font-size: 1.6rem;
   font-weight: 500;

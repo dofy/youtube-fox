@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 interface PreviewPanelProps {
   closePreviewPanel: () => void
@@ -15,11 +15,7 @@ export const PreviewPanel: React.FC<PreviewPanelProps> = ({ closePreviewPanel })
           </button>
         </div>
       </div>
-      <h3>
-        Video ID:
-        <span id="video-id"></span>
-      </h3>
-      <section id="video-captions" className="content"></section>
+      <div id="preview-content" className="content"></div>
     </div>
   )
 }

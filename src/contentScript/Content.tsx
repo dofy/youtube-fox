@@ -1,12 +1,14 @@
 import { Caption, getCaptions } from '@dofy/youtube-caption-fox'
 import React from 'react'
+import { UserOptions } from '../types'
 
 interface ContentProps {
   videoId: string
+  options: UserOptions
   openPreviewPanel: (videoId: string, captions: Caption[]) => void
 }
 
-export const Content: React.FC<ContentProps> = ({ videoId, openPreviewPanel }) => {
+export const Content: React.FC<ContentProps> = ({ videoId, options, openPreviewPanel }) => {
   const captions: Caption[] = []
 
   const fetchCaptions = async (videoId: string) => {
@@ -35,12 +37,21 @@ export const Content: React.FC<ContentProps> = ({ videoId, openPreviewPanel }) =
           No Captions
         </div>
       </div>
-      <div id={`buttons-${videoId}`} className="group">
-        <button className="button font" onClick={previewCaptions}>
-          Preview Captions
+      {options.openaiApiKey ? (
+        <div id={`buttons-${videoId}`} className="group">
+          <button className="button font" onClick={previewCaptions}>
+            Preview Captions
+          </button>
+          <button className="button font">Safe Draft</button>
+        </div>
+      ) : (
+        <button
+          className="label error button"
+          onClick={() => chrome.runtime.sendMessage({ type: 'openOptionsPage' })}
+        >
+          Please set your OpenAI API Key in the extension options
         </button>
-        <button className="button font">Safe Draft</button>
-      </div>
+      )}
     </div>
   )
 }

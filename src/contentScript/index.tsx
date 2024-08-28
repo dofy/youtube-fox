@@ -1,37 +1,31 @@
 import { Caption } from '@dofy/youtube-caption-fox'
 import { createRoot, Root } from 'react-dom/client'
 import { UserOptions } from '../types'
-import { CaptionsList } from './CaptionsList'
 import { Content } from './Content'
+import { PreviewContent } from './PreviewContent'
 import { PreviewPanel } from './PreviewPanel'
 import './index.css'
 
 const globalObjectMap: {
   options?: UserOptions
   containers: {
-    videoCaptions?: Root
+    previewContent?: Root
   }
 } = {
   containers: {},
 }
 
-chrome.runtime.sendMessage({ type: 'getOptions' }, (response) => {
-  globalObjectMap.options = response.options
-})
-
 const openPreviewPanel = (videoId: string, captions: Caption[]) => {
   const previewPanel = document.getElementById('preview-panel')
   previewPanel?.classList.add('active')
-  const videoIdElement = previewPanel?.querySelector('#video-id')
-  if (videoIdElement) {
-    videoIdElement.innerHTML = videoId
-  }
 
-  if (!globalObjectMap.containers.videoCaptions) {
-    const videoCaptions = document.getElementById('video-captions')
-    globalObjectMap.containers.videoCaptions = createRoot(videoCaptions!)
+  if (!globalObjectMap.containers.previewContent) {
+    const videoCaptions = document.getElementById('preview-content')
+    globalObjectMap.containers.previewContent = createRoot(videoCaptions!)
   }
-  globalObjectMap.containers.videoCaptions?.render(<CaptionsList captions={captions} />)
+  globalObjectMap.containers.previewContent?.render(
+    <PreviewContent videoId={videoId} captions={captions} />,
+  )
 }
 
 const closePreviewPanel = () => {
@@ -59,7 +53,13 @@ const updateVideoCard = (card: HTMLElement) => {
     container.setAttribute('id', videoId!)
     card.appendChild(container)
 
-    createRoot(container).render(<Content videoId={videoId!} openPreviewPanel={openPreviewPanel} />)
+    createRoot(container).render(
+      <Content
+        videoId={videoId!}
+        options={globalObjectMap.options!}
+        openPreviewPanel={openPreviewPanel}
+      />,
+    )
     container.classList.add('has-content')
   } catch (error) {
     console.error(error)
@@ -72,9 +72,6 @@ const insertContentToVideoCards = () => {
     updateVideoCard(card as HTMLElement)
   })
 }
-
-insertPreviewPanel()
-insertContentToVideoCards()
 
 const observer = new MutationObserver((mutations) => {
   mutations.forEach((mutation) => {
@@ -89,4 +86,12 @@ const observer = new MutationObserver((mutations) => {
   })
 })
 
-observer.observe(document.body, { childList: true, subtree: true })
+// begin!!!
+chrome.runtime.sendMessage({ type: 'getOptions' }, (response) => {
+  globalObjectMap.options = response.options
+
+  insertPreviewPanel()
+  insertContentToVideoCards()
+
+  observer.observe(document.body, { childList: true, subtree: true })
+})

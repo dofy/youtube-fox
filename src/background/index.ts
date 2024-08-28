@@ -1,3 +1,7 @@
+chrome.action.onClicked.addListener(() => {
+  chrome.runtime.openOptionsPage()
+})
+
 chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
   switch (request.type) {
     case 'getOptions':
@@ -5,8 +9,12 @@ chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
         sendResponse({ message: 'getOptions', options: result.options })
       })
       break
+    case 'openOptionsPage':
+      chrome.runtime.openOptionsPage()
+      break
     default:
-      sendResponse({ message: 'unknown request' })
+      sendResponse({ message: 'unknownMessageType' })
+      console.error('Unknown Message Type')
       break
   }
   return true
