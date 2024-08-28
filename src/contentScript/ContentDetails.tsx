@@ -1,6 +1,6 @@
 import { Caption, getCaptions } from '@dofy/youtube-caption-fox'
 import React, { useEffect, useState } from 'react'
-import { FiLoader, FiTag } from 'react-icons/fi'
+import { FiCoffee, FiGitlab, FiLoader, FiPrinter, FiSave } from 'react-icons/fi'
 import { UserOptions } from '../types'
 
 interface ContentDetailsProps {
@@ -31,7 +31,10 @@ export const ContentDetails: React.FC<ContentDetailsProps> = ({
   return (
     <div className="container">
       <div className="group">
-        <div className="label">ID: {videoId}</div>
+        <div className="label item-with-icon">
+          <FiGitlab />
+          {videoId}
+        </div>
         {loading && (
           <div className="label loading item-with-icon">
             <FiLoader />
@@ -40,7 +43,7 @@ export const ContentDetails: React.FC<ContentDetailsProps> = ({
         )}
         {!loading && captions?.length === 0 && (
           <div className="label error item-with-icon">
-            <FiTag />
+            <FiCoffee />
             No Captions
           </div>
         )}
@@ -50,10 +53,17 @@ export const ContentDetails: React.FC<ContentDetailsProps> = ({
         captions &&
         captions.length > 0 && (
           <div className="group">
-            <button className="button font" onClick={() => openPreviewPanel(videoId, captions)}>
+            <button
+              className="button font item-with-icon"
+              onClick={() => openPreviewPanel(videoId, captions)}
+            >
+              <FiPrinter />
               Preview Captions
             </button>
-            <button className="button font">Safe Draft</button>
+            <button className="button font item-with-icon">
+              <FiSave />
+              Safe Draft to S3
+            </button>
           </div>
         )
       ) : (

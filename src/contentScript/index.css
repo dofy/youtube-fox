@@ -43,6 +43,7 @@
   border-radius: 0.48rem;
   background-color: #a6dbdb;
   cursor: pointer;
+  justify-content: center;
 }
 
 .preview-panel {
@@ -89,6 +90,14 @@
 }
 
 .preview-panel .header .close {
+  pading: 0.4rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.preview-panel .header .close:hover {
+  background-color: #c33;
+  color: #fff;
 }
 
 .preview-panel .video-id {
