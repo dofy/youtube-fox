@@ -42,7 +42,6 @@
   padding: 0.8rem 1.6rem;
   border-radius: 0.48rem;
   background-color: #a6dbdb;
-  font-weight: 600;
   cursor: pointer;
 }
 
@@ -130,6 +129,6 @@
   font-weight: 500;
 }
 
-.hidden {
-  display: none;
+.loading {
+  background-color: #eee9;
 }

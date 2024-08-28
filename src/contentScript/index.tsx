@@ -44,13 +44,13 @@ const insertPreviewPanel = () => {
 const updateVideoCard = (card: HTMLElement) => {
   const videoUrl = (card.querySelector('#video-title') as HTMLAnchorElement).href
   const videoId = new URL(videoUrl).searchParams.get('v')
-
   if (videoUrl.includes('shorts')) return
-  if (card.querySelectorAll('.has-content').length > 0) return
+
+  card.querySelectorAll('.has-content').forEach((node) => node.remove())
 
   try {
     const container = document.createElement('div')
-    container.setAttribute('id', videoId!)
+    container.classList.add('has-content')
     card.appendChild(container)
 
     createRoot(container).render(
@@ -60,7 +60,6 @@ const updateVideoCard = (card: HTMLElement) => {
         openPreviewPanel={openPreviewPanel}
       />,
     )
-    container.classList.add('has-content')
   } catch (error) {
     console.error(error)
   }
@@ -68,12 +67,20 @@ const updateVideoCard = (card: HTMLElement) => {
 
 const insertContentToVideoCards = () => {
   const videoCards = document.querySelectorAll('.text-wrapper.ytd-video-renderer')
-  videoCards.forEach((card) => {
+  videoCards.forEach((card, key) => {
+    key === 0 && console.log((card.querySelector('#video-title') as HTMLAnchorElement).href)
     updateVideoCard(card as HTMLElement)
   })
 }
 
+let lastUrl = window.location.href
 const observer = new MutationObserver((mutations) => {
+  const currentUrl = window.location.href
+  if (lastUrl !== currentUrl) {
+    lastUrl = currentUrl
+    setTimeout(insertContentToVideoCards, 1000)
+  }
+
   mutations.forEach((mutation) => {
     mutation.addedNodes.forEach((node) => {
       if (node instanceof HTMLElement) {
