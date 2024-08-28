@@ -1,5 +1,6 @@
 import { Caption, getCaptions } from '@dofy/youtube-caption-fox'
 import React, { useEffect, useState } from 'react'
+import { FiLoader, FiTag } from 'react-icons/fi'
 import { UserOptions } from '../types'
 
 interface ContentDetailsProps {
@@ -31,8 +32,18 @@ export const ContentDetails: React.FC<ContentDetailsProps> = ({
     <div className="container">
       <div className="group">
         <div className="label">ID: {videoId}</div>
-        {loading && <div className="label loading">Loading Captions...</div>}
-        {!loading && captions?.length === 0 && <div className="label error">No Captions</div>}
+        {loading && (
+          <div className="label loading item-with-icon">
+            <FiLoader />
+            Loading Captions...
+          </div>
+        )}
+        {!loading && captions?.length === 0 && (
+          <div className="label error item-with-icon">
+            <FiTag />
+            No Captions
+          </div>
+        )}
       </div>
       {options.openaiApiKey ? (
         !loading &&

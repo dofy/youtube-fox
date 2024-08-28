@@ -132,3 +132,9 @@
 .loading {
   background-color: #eee9;
 }
+
+.item-with-icon {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
