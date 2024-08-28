@@ -1,9 +1,9 @@
 {
   "name": "youtube-fox",
-  "displayName": "youtube-fox",
-  "version": "0.0.0",
-  "author": "**",
-  "description": "",
+  "displayName": "YouTube Fox",
+  "version": "0.1.0",
+  "author": "Seven Yu <dofyyu@gmail.com>",
+  "description": "An extension to help you get YouTube captions.",
   "type": "module",
   "license": "MIT",
   "keywords": [
