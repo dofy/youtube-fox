@@ -68,7 +68,7 @@ export const ContentDetails: React.FC<ContentDetailsProps> = ({
         )
       ) : (
         <button
-          className="label error button"
+          className="label button"
           onClick={() => chrome.runtime.sendMessage({ type: 'openOptionsPage' })}
         >
           Please set your OpenAI API Key in the extension options

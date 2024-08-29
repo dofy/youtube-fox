@@ -95,7 +95,7 @@ export const Options = () => {
         />
         <div className="button-group">
           <button type="button" onClick={resetUserOptions}>
-            Reset
+            Reset to Default Options
           </button>
         </div>
       </form>
