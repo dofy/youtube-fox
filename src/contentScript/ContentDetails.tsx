@@ -1,6 +1,6 @@
 import { getCaptions, VideoInfo } from '@dofy/youtube-caption-fox'
 import React, { useEffect, useState } from 'react'
-import { FiCloud, FiCoffee, FiGitlab, FiLoader, FiPrinter, FiSave } from 'react-icons/fi'
+import { FiCloud, FiCoffee, FiCopy, FiLoader, FiPrinter, FiSave } from 'react-icons/fi'
 import { putFileToBucket } from '../utils/s3'
 import { ContentProps } from './Content'
 
@@ -44,10 +44,17 @@ export const ContentDetails: React.FC<ContentProps> = ({ videoId, options, openP
   return (
     <div className="container">
       <div className="group">
-        <div className="label item-with-icon">
-          <FiGitlab fill="#c00" color="#f00" />
+        <a
+          href="/watch?v=ZbZSe6N_BXs"
+          className="label item-with-icon"
+          onClick={(evt) => {
+            evt.preventDefault()
+            navigator.clipboard.writeText(videoId)
+          }}
+        >
+          <FiCopy color="#c00" />
           {videoId}
-        </div>
+        </a>
         {loading && (
           <div className="label loading item-with-icon">
             <FiLoader color="#c00" />

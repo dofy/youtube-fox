@@ -29,8 +29,10 @@
   border-radius: 0.36rem;
   background-color: #f0f0f0;
   padding: 0.5rem 1rem;
+  color: #333;
   font-weight: 500;
   font-size: 1rem;
+  text-decoration: none;
 }
 
 .label.error {
