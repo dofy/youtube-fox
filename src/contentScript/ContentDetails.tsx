@@ -1,6 +1,7 @@
 import { getCaptions, VideoInfo } from '@dofy/youtube-caption-fox'
 import React, { useEffect, useState } from 'react'
 import { FiCoffee, FiGitlab, FiLoader, FiPrinter, FiSave } from 'react-icons/fi'
+import { putFileToBucket } from '../utils/s3'
 import { ContentProps } from './Content'
 
 export const ContentDetails: React.FC<ContentProps> = ({ videoId, options, openPreviewPanel }) => {
@@ -47,7 +48,17 @@ export const ContentDetails: React.FC<ContentProps> = ({ videoId, options, openP
               <FiPrinter />
               Preview Captions
             </button>
-            <button className="button font item-with-icon">
+            <button
+              className="button font item-with-icon"
+              onClick={async () => {
+                const result = await putFileToBucket(
+                  new Date().toISOString(),
+                  JSON.stringify(video, null, 2),
+                  'application/json',
+                )
+                console.log('-- result:', result)
+              }}
+            >
               <FiSave />
               Safe Draft to S3
             </button>

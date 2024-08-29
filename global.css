@@ -58,14 +58,15 @@ form {
 
 label {
   padding: 0.5rem;
-  color: #d32f2f;
+  color: #c00;
   font-weight: 500;
   font-size: 1rem;
 }
 
 label > .required {
-  margin-left: 0.2rem;
+  margin-left: 0.6rem;
   color: #d32f2f;
+  font-weight: 700;
 }
 
 input,

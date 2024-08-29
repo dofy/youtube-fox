@@ -1,26 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Copyright } from '../components/Copyright'
 import { FormControl } from '../components/FormControl'
-import { DEFAULT_PROMPT, DEFAULT_SYSTEM_PROMPT } from '../contents'
+import { DefaultOptions } from '../contents'
 import { UserOptions } from '../types'
 
-const defaultOptions = {
-  openaiApiKey: '',
-  s3AccessKey: '',
-  s3SecretKey: '',
-  bucketName: 'flow-public-assets',
-  prefixKey: 'seo/captions/',
-  systemPrompt: DEFAULT_SYSTEM_PROMPT,
-  prompt: DEFAULT_PROMPT,
-}
-
 export const Options = () => {
-  const [userOption, setUserOption] = useState<UserOptions>(defaultOptions)
+  const [userOption, setUserOption] = useState<UserOptions>(DefaultOptions)
 
   useEffect(() => {
     try {
       chrome.storage.sync.get(['options'], (result) => {
-        setUserOption(result.options || defaultOptions)
+        setUserOption(result.options || DefaultOptions)
       })
     } catch (e) {
       console.error(e)
@@ -41,9 +31,9 @@ export const Options = () => {
   }
 
   const resetUserOptions = () => {
-    setUserOption(defaultOptions)
+    setUserOption(DefaultOptions)
     try {
-      chrome.storage.sync.set({ options: defaultOptions })
+      chrome.storage.sync.set({ options: DefaultOptions })
     } catch (e) {
       console.error(e)
     }
@@ -81,17 +71,24 @@ export const Options = () => {
         />
         <FormControl
           isRequired
+          label="S3 Region:"
+          name="s3Region"
+          value={userOption.s3Region}
+          onChange={handleChange}
+          placeholder="Enter your S3 Region here"
+        />
+        <FormControl
+          isRequired
           label="Bucket Name:"
-          name="bucketName"
-          value={userOption.bucketName}
+          name="s3BucketName"
+          value={userOption.s3BucketName}
           onChange={handleChange}
           placeholder="Enter your Bucket Name here"
         />
         <FormControl
-          isRequired
           label="Prefix Key:"
-          name="prefixKey"
-          value={userOption.prefixKey}
+          name="s3PrefixKey"
+          value={userOption.s3PrefixKey}
           onChange={handleChange}
           placeholder="Enter your Prefix Key here"
         />

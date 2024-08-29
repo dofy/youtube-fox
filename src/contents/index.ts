@@ -5,3 +5,14 @@ You are a professional content writer who is tasked with creating a 700 word, SE
 export const DEFAULT_PROMPT = 'The subtitle is: {{subtitle}}'
 
 export const OPENAI_API_URL = 'https://api.openai.com/v1/engines/davinci/completions'
+
+export const DefaultOptions = {
+  openaiApiKey: '',
+  s3AccessKey: '',
+  s3SecretKey: '',
+  s3Region: 'us-west-1',
+  s3BucketName: 'flow-public-assets',
+  s3PrefixKey: 'seo/captions/',
+  systemPrompt: DEFAULT_SYSTEM_PROMPT,
+  prompt: DEFAULT_PROMPT,
+}

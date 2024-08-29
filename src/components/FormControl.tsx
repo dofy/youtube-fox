@@ -32,6 +32,7 @@ export const FormControl: React.FC<FormControlProps> = ({
       {type === 'textarea' ? (
         <textarea
           id={fieldId}
+          required={isRequired}
           name={name || fieldId}
           placeholder={placeholder}
           value={value}
@@ -42,6 +43,7 @@ export const FormControl: React.FC<FormControlProps> = ({
         <input
           type={type}
           id={fieldId}
+          required={isRequired}
           name={name || fieldId}
           placeholder={placeholder}
           value={value}
