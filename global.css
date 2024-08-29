@@ -6,7 +6,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  color: #333333;
+  color: #333;
   /* font-family: 'M PLUS Code Latin', monospace; */
   /* font-family: 'LXGW WenKai Mono TC', monospace; */
   font-family: 'Noto Sans SC', sans-serif;
@@ -22,23 +22,28 @@ main {
   height: 100vh;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  color: #c00;
+  font-weight: 500;
+}
+
 /* for new tab */
 h1 {
   font-size: 12rem;
 }
 
 h2 {
-  font-weight: 500;
   font-size: 3rem;
 }
 
 h3 {
-  font-weight: 500;
   font-size: 2rem;
 }
 
 h4 {
-  font-weight: 500;
   font-size: 1.5rem;
 }
 
