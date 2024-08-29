@@ -70,9 +70,8 @@
   backdrop-filter: blur(10px);
   transition: right 0.3s ease;
   box-sizing: border-box;
-  box-shadow: 0 0 10px 0 #0002;
-  /* background-color: #0336; */
-  background-color: #c003;
+  box-shadow: 0 0 10px 0 #0009;
+  background-color: #0336;
   padding: 1.6rem;
   width: 960px;
   max-width: 100%;
@@ -111,7 +110,7 @@
 }
 
 .preview-panel .header .close:hover {
-  background-color: #d32f2f;
+  background-color: #c00;
   color: #f0f0f0;
 }
 
@@ -140,7 +139,7 @@
 
 .preview-panel .content .caption .caption-item {
   border-radius: 0.56rem;
-  background-color: #2196f3cc;
+  background-color: #c009;
   padding: 0.4rem 0.8rem;
   min-width: 56px;
   color: #eee;

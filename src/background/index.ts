@@ -2,6 +2,10 @@ chrome.action.onClicked.addListener(() => {
   chrome.runtime.openOptionsPage()
 })
 
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.runtime.openOptionsPage()
+})
+
 chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
   switch (request.type) {
     case 'getOptions':

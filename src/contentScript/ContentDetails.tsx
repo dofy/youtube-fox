@@ -32,12 +32,12 @@ export const ContentDetails: React.FC<ContentDetailsProps> = ({
     <div className="container">
       <div className="group">
         <div className="label item-with-icon">
-          <FiGitlab />
+          <FiGitlab fill="#c00" color="#f00" />
           {videoId}
         </div>
         {loading && (
           <div className="label loading item-with-icon">
-            <FiLoader />
+            <FiLoader color="#c00" />
             Loading Captions...
           </div>
         )}

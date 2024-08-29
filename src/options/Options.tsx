@@ -6,8 +6,10 @@ import { UserOptions } from '../types'
 
 const defaultOptions = {
   openaiApiKey: '',
+  s3AccessKey: '',
   s3SecretKey: '',
-  bucketName: '',
+  bucketName: 'flow-public-assets',
+  prefixKey: 'seo/captions/',
   systemPrompt: DEFAULT_SYSTEM_PROMPT,
   prompt: DEFAULT_PROMPT,
 }
@@ -62,8 +64,17 @@ export const Options = () => {
         />
         <FormControl
           isRequired
-          label="S3 Secret Key:"
+          label="S3 Access Key ID:"
+          name="s3AccessKey"
+          value={userOption.s3AccessKey}
+          onChange={handleChange}
+          placeholder="Enter your S3 Access Key here"
+        />
+        <FormControl
+          isRequired
+          label="S3 Secret Access Key:"
           name="s3SecretKey"
+          type="password"
           value={userOption.s3SecretKey}
           onChange={handleChange}
           placeholder="Enter your S3 Secret Key here"
@@ -77,9 +88,17 @@ export const Options = () => {
           placeholder="Enter your Bucket Name here"
         />
         <FormControl
+          isRequired
+          label="Prefix Key:"
+          name="prefixKey"
+          value={userOption.prefixKey}
+          onChange={handleChange}
+          placeholder="Enter your Prefix Key here"
+        />
+        <FormControl
           label="System Prompt:"
           type="textarea"
-          minHeight={200}
+          minHeight={230}
           name="systemPrompt"
           value={userOption.systemPrompt}
           onChange={handleChange}
