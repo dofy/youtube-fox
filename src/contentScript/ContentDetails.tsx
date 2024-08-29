@@ -1,19 +1,10 @@
 import { Caption, getCaptions } from '@dofy/youtube-caption-fox'
 import React, { useEffect, useState } from 'react'
 import { FiCoffee, FiGitlab, FiLoader, FiPrinter, FiSave } from 'react-icons/fi'
-import { UserOptions } from '../types'
+import { ContentProps } from './Content'
 
-interface ContentDetailsProps {
-  videoId: string
-  options: UserOptions
-  openPreviewPanel: (videoId: string, captions: Caption[]) => void
-}
-
-export const ContentDetails: React.FC<ContentDetailsProps> = ({
-  videoId,
-  options,
-  openPreviewPanel,
-}) => {
+export const ContentDetails: React.FC<ContentProps> = ({ video, options, openPreviewPanel }) => {
+  const { videoId } = video
   const [captions, setCaptions] = useState<Caption[]>()
   const [loading, setLoading] = useState(false)
 
@@ -55,7 +46,7 @@ export const ContentDetails: React.FC<ContentDetailsProps> = ({
           <div className="group">
             <button
               className="button font item-with-icon"
-              onClick={() => openPreviewPanel(videoId, captions)}
+              onClick={() => openPreviewPanel({ ...video, captions })}
             >
               <FiPrinter />
               Preview Captions

@@ -1,10 +1,13 @@
 import { Caption } from '@dofy/youtube-caption-fox'
 import { createRoot, Root } from 'react-dom/client'
-import { UserOptions } from '../types'
+import { UserOptions, VideoInfo } from '../types'
 import { Content } from './Content'
 import { PreviewContent } from './PreviewContent'
 import { PreviewPanel } from './PreviewPanel'
 import './index.css'
+
+const VIDEO_ITEM_CLASS = '#dismissible'
+const VIDEO_TEXT_CLASS = '.text-wrapper.ytd-video-renderer'
 
 const globalObjectMap: {
   options?: UserOptions
@@ -15,7 +18,7 @@ const globalObjectMap: {
   containers: {},
 }
 
-const openPreviewPanel = (videoId: string, captions: Caption[]) => {
+const openPreviewPanel = (video: VideoInfo) => {
   const previewPanel = document.getElementById('preview-panel')
   previewPanel?.classList.add('active')
 
@@ -23,9 +26,7 @@ const openPreviewPanel = (videoId: string, captions: Caption[]) => {
     const videoCaptions = document.getElementById('preview-content')
     globalObjectMap.containers.previewContent = createRoot(videoCaptions!)
   }
-  globalObjectMap.containers.previewContent?.render(
-    <PreviewContent videoId={videoId} captions={captions} />,
-  )
+  globalObjectMap.containers.previewContent?.render(<PreviewContent video={video} />)
 }
 
 const closePreviewPanel = () => {
@@ -41,21 +42,34 @@ const insertPreviewPanel = () => {
   createRoot(previewPanelContainer).render(<PreviewPanel closePreviewPanel={closePreviewPanel} />)
 }
 
-const updateVideoCard = (card: HTMLElement) => {
-  const videoUrl = (card.querySelector('#video-title') as HTMLAnchorElement).href
-  const videoId = new URL(videoUrl).searchParams.get('v')
-  if (videoUrl.includes('shorts')) return
+const updateVideoCard = (item: HTMLElement) => {
+  const card = item.querySelector<HTMLElement>(VIDEO_TEXT_CLASS)
+  const videoTitleEl = card?.querySelector<HTMLAnchorElement>('#video-title')
+  const videoCoverEl = item.querySelector<HTMLImageElement>('.yt-core-image')
 
-  card.querySelectorAll('.has-content').forEach((node) => node.remove())
+  if (!videoTitleEl || !videoCoverEl) return
+  const videoUrl = videoTitleEl?.href
+  const videoId = new URL(videoUrl!).searchParams.get('v')
+  const videoTitle = videoTitleEl?.textContent
+  const videoCover = videoCoverEl?.src
+  console.log('🚀 ~ updateVideoCard ~ videoCover:', videoCover)
+
+  if (videoUrl?.includes('shorts')) return
+
+  card?.querySelectorAll('.has-content').forEach((node) => node.remove())
 
   try {
     const container = document.createElement('div')
     container.classList.add('has-content')
-    card.appendChild(container)
+    card?.appendChild(container)
 
     createRoot(container).render(
       <Content
-        videoId={videoId!}
+        video={{
+          videoId: videoId!,
+          videoTitle: videoTitle!,
+          videoCover: videoCover!,
+        }}
         options={globalObjectMap.options!}
         openPreviewPanel={openPreviewPanel}
       />,
@@ -66,10 +80,9 @@ const updateVideoCard = (card: HTMLElement) => {
 }
 
 const insertContentToVideoCards = () => {
-  const videoCards = document.querySelectorAll('.text-wrapper.ytd-video-renderer')
-  videoCards.forEach((card, key) => {
-    key === 0 && console.log((card.querySelector('#video-title') as HTMLAnchorElement).href)
-    updateVideoCard(card as HTMLElement)
+  const videoItems = document.querySelectorAll<HTMLElement>(VIDEO_ITEM_CLASS)
+  videoItems?.forEach((item) => {
+    updateVideoCard(item)
   })
 }
 
@@ -84,9 +97,9 @@ const observer = new MutationObserver((mutations) => {
   mutations.forEach((mutation) => {
     mutation.addedNodes.forEach((node) => {
       if (node instanceof HTMLElement) {
-        const card = node.querySelector('.text-wrapper.ytd-video-renderer')
-        if (card) {
-          updateVideoCard(card as HTMLElement)
+        const videoItem = node.querySelector(VIDEO_ITEM_CLASS)
+        if (videoItem) {
+          updateVideoCard(videoItem as HTMLElement)
         }
       }
     })

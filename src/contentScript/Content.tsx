@@ -1,14 +1,14 @@
 import { Caption } from '@dofy/youtube-caption-fox'
 import React from 'react'
-import { UserOptions } from '../types'
+import { UserOptions, VideoInfo } from '../types'
 import { ContentDetails } from './ContentDetails'
 
-interface ContentProps {
-  videoId: string
+export interface ContentProps {
+  video: VideoInfo
   options: UserOptions
-  openPreviewPanel: (videoId: string, captions: Caption[]) => void
+  openPreviewPanel: (video: VideoInfo) => void
 }
 
-export const Content: React.FC<ContentProps> = ({ videoId, options, openPreviewPanel }) => {
-  return <ContentDetails videoId={videoId} options={options} openPreviewPanel={openPreviewPanel} />
+export const Content: React.FC<ContentProps> = ({ video, options, openPreviewPanel }) => {
+  return <ContentDetails video={video} options={options} openPreviewPanel={openPreviewPanel} />
 }

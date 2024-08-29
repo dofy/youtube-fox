@@ -1,20 +1,21 @@
-import { Caption } from '@dofy/youtube-caption-fox'
+import { VideoInfo } from '../types'
 import { CaptionsList } from './CaptionsList'
 
 interface PreviewContentProps {
-  videoId: string
-  captions: Caption[]
+  video: VideoInfo
 }
 
-export const PreviewContent: React.FC<PreviewContentProps> = ({ videoId, captions }) => {
+export const PreviewContent: React.FC<PreviewContentProps> = ({ video }) => {
   return (
     <>
       <h3>
         Video ID:
-        <span className="video-id">{videoId}</span>
+        <span className="video-id">{video.videoId}</span>
       </h3>
+      <h2>{video.videoTitle}</h2>
+      <img src={video.videoCover} alt={video.videoTitle} />
       <section className="content">
-        <CaptionsList captions={captions} />
+        <CaptionsList captions={video.captions || []} />
       </section>
     </>
   )
