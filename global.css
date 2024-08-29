@@ -1,13 +1,16 @@
 /* @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Code+Latin:wght@100..700&display=swap'); */
-@import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+Mono+TC&family=M+PLUS+Code+Latin:wght@100..700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+Mono+TC&family=M+PLUS+Code+Latin:wght@100..700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   /* font-family: 'M PLUS Code Latin', monospace; */
-  font-family: 'LXGW WenKai Mono TC', monospace;
+  /* font-family: 'LXGW WenKai Mono TC', monospace; */
+  font-family: 'Noto Sans SC', sans-serif;
   font-optical-sizing: auto;
+  color: #3e4b4b;
 }
 
 main {
@@ -26,14 +29,17 @@ h1 {
 
 h2 {
   font-size: 3rem;
+  font-weight: 500;
 }
 
 h3 {
   font-size: 2rem;
+  font-weight: 500;
 }
 
 h4 {
   font-size: 1.5rem;
+  font-weight: 500;
 }
 
 form {
@@ -52,7 +58,7 @@ label {
 }
 
 label > .required {
-  color: red;
+  color: #ff6b6b;
   margin-left: 0.2rem;
 }
 
@@ -60,8 +66,8 @@ input,
 textarea {
   padding: 0.5rem 1rem;
   border: none;
-  border-left: 1px solid #a6dbdb66;
-  border-bottom: 2px solid #a6dbdb;
+  border-left: 1px solid #e0e7e7;
+  border-bottom: 2px solid #e0e7e7;
   transition: all 0.3s;
   font-size: 1rem;
 }
@@ -69,8 +75,8 @@ textarea {
 input:focus,
 textarea:focus {
   outline: none;
-  border-bottom: 6px solid #a6dbdb;
-  background-color: #a6dbdb20;
+  border-bottom: 6px solid #e0e7e7;
+  background-color: #e0e7e7;
 }
 
 textarea {
@@ -82,22 +88,22 @@ button {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 0.48rem;
-  border-bottom: 2px solid #a6dbdb;
-  background-color: #a6dbdb90;
-  color: black;
+  border-bottom: 2px solid #8fa7a7;
+  background-color: #e0e7e7;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 400;
   cursor: pointer;
   transition: all 0.3s;
 }
 
 button:hover {
-  background-color: #a6dbdb;
+  background-color: #e0e7e7;
+  border-bottom: 6px solid #8fa7a7;
 }
 
 button:active {
-  background-color: #a6dbdb;
-  border-bottom: 6px solid #a6dbdb;
+  background-color: #e0e7e7;
+  border-bottom: 4px solid #8fa7a7;
 }
 
 .container {
@@ -130,7 +136,7 @@ button:active {
 .form-control > small {
   font-size: 0.8rem;
   font-style: italic;
-  color: #afafaf;
+  color: #82d4d4;
 }
 
 .form-control > small::before {
@@ -140,9 +146,25 @@ button:active {
   margin-right: 0.4rem;
   padding: 0.05rem 0.3rem;
   border-radius: 50%;
-  border: 1px solid #afafaf;
+  border: 1px solid #82d4d4;
 }
 
 .copyright {
   font-size: 0.8rem;
+  color: #5bc0de69;
 }
+
+/* 1.	文字（Primary Text Color）
+•	深灰色 #3e4b4b：這個顏色與背景色形成對比，使文字更易於閱讀。
+2.	背景（Background Color）
+•	淡灰綠色 #e0e7e7：這是一個較淺的灰綠色，與主色調協調一致，適合作為背景色。
+3.	邊框（Border Color）
+•	鋼青色 #8fa7a7：這個顏色比主色調稍深，可以作為邊框顏色。
+4.	高亮（Highlight Color）
+•	柔和的綠松石色 #82d4d4：這個顏色比主色調亮，可以用來高亮重要信息或互動元素。
+5.	警告（Warning Color）
+•	橙色 #ffb347：這個暖色調與主色形成對比，用於顯示警告信息。
+6.	錯誤（Error Color）
+•	珊瑚紅 #ff6b6b：這個鮮豔的紅色用於顯示錯誤信息，能夠引起用戶注意。
+7.	信息（Info Color）
+•	天藍色 #5bc0de：這個顏色與主色調保持冷色系的一致性，用於顯示信息提示。 */
