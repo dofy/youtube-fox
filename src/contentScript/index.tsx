@@ -79,7 +79,7 @@ const observer = new MutationObserver((mutations) => {
   const currentUrl = window.location.href
   if (lastUrl !== currentUrl) {
     lastUrl = currentUrl
-    setTimeout(insertContentToVideoCards, 1000)
+    setTimeout(insertContentToVideoCards, 1500)
   }
 
   mutations.forEach((mutation) => {
