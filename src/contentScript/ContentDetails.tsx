@@ -1,17 +1,16 @@
-import { Caption, getCaptions } from '@dofy/youtube-caption-fox'
+import { getCaptions, VideoInfo } from '@dofy/youtube-caption-fox'
 import React, { useEffect, useState } from 'react'
 import { FiCoffee, FiGitlab, FiLoader, FiPrinter, FiSave } from 'react-icons/fi'
 import { ContentProps } from './Content'
 
-export const ContentDetails: React.FC<ContentProps> = ({ video, options, openPreviewPanel }) => {
-  const { videoId } = video
-  const [captions, setCaptions] = useState<Caption[]>()
+export const ContentDetails: React.FC<ContentProps> = ({ videoId, options, openPreviewPanel }) => {
+  const [video, setVideo] = useState<VideoInfo>()
   const [loading, setLoading] = useState(false)
 
   const fetchCaptions = async (videoId: string) => {
     setLoading(true)
-    const captionsData = await getCaptions(videoId)
-    setCaptions(captionsData)
+    const videoData = await getCaptions(videoId)
+    setVideo(videoData)
     setLoading(false)
   }
 
@@ -32,7 +31,7 @@ export const ContentDetails: React.FC<ContentProps> = ({ video, options, openPre
             Loading Captions...
           </div>
         )}
-        {!loading && captions?.length === 0 && (
+        {!loading && video?.captions?.length === 0 && (
           <div className="label error item-with-icon">
             <FiCoffee />
             No Captions
@@ -41,13 +40,10 @@ export const ContentDetails: React.FC<ContentProps> = ({ video, options, openPre
       </div>
       {options.openaiApiKey ? (
         !loading &&
-        captions &&
-        captions.length > 0 && (
+        video &&
+        video.captions.length > 0 && (
           <div className="group">
-            <button
-              className="button font item-with-icon"
-              onClick={() => openPreviewPanel({ ...video, captions })}
-            >
+            <button className="button font item-with-icon" onClick={() => openPreviewPanel(video)}>
               <FiPrinter />
               Preview Captions
             </button>

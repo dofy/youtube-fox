@@ -1,4 +1,4 @@
-import { VideoInfo } from '../types'
+import { VideoInfo } from '@dofy/youtube-caption-fox'
 import { CaptionsList } from './CaptionsList'
 
 interface PreviewContentProps {
@@ -8,14 +8,18 @@ interface PreviewContentProps {
 export const PreviewContent: React.FC<PreviewContentProps> = ({ video }) => {
   return (
     <>
-      <h3>
-        Video ID:
-        <span className="video-id">{video.videoId}</span>
-      </h3>
-      <h2>{video.videoTitle}</h2>
-      <img src={video.videoCover} alt={video.videoTitle} />
+      <div className="video-info">
+        <img src={video.cover} className="img-cover" alt={video.title} />
+        <div className="video-text">
+          <h3>
+            Video ID:
+            <span className="video-id">{video.id}</span>
+          </h3>
+          <h2 className="video-title">{video.title}</h2>
+        </div>
+      </div>
       <section className="content">
-        <CaptionsList captions={video.captions || []} />
+        <CaptionsList captions={video.captions} />
       </section>
     </>
   )

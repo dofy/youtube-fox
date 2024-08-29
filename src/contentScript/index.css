@@ -163,3 +163,25 @@
   align-items: center;
   gap: 0.4rem;
 }
+
+.video-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+.video-info .img-cover {
+  max-width: 180px;
+  max-height: 120px;
+  object-fit: cover;
+}
+
+.video-info .video-text {
+  /* display: flex; */
+  /* flex-direction: column; */
+}
+
+.video-info .video-text .video-title {
+  font-weight: 600;
+  font-size: 1.6rem;
+}

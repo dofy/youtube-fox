@@ -1,5 +1,3 @@
-import { Caption } from '@dofy/youtube-caption-fox'
-
 export type UserOptions = {
   openaiApiKey: string
   s3AccessKey: string
@@ -8,11 +6,4 @@ export type UserOptions = {
   prefixKey: string
   systemPrompt: string
   prompt: string
-}
-
-export type VideoInfo = {
-  videoId: string
-  videoTitle: string
-  videoCover: string
-  captions?: Caption[]
 }

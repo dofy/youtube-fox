@@ -1,13 +1,12 @@
-import { Caption } from '@dofy/youtube-caption-fox'
+import { VideoInfo } from '@dofy/youtube-caption-fox'
 import { createRoot, Root } from 'react-dom/client'
-import { UserOptions, VideoInfo } from '../types'
+import { UserOptions } from '../types'
 import { Content } from './Content'
 import { PreviewContent } from './PreviewContent'
 import { PreviewPanel } from './PreviewPanel'
 import './index.css'
 
-const VIDEO_ITEM_CLASS = '#dismissible'
-const VIDEO_TEXT_CLASS = '.text-wrapper.ytd-video-renderer'
+const VIDEO_CARD_CLASS = '.text-wrapper.ytd-video-renderer'
 
 const globalObjectMap: {
   options?: UserOptions
@@ -42,17 +41,10 @@ const insertPreviewPanel = () => {
   createRoot(previewPanelContainer).render(<PreviewPanel closePreviewPanel={closePreviewPanel} />)
 }
 
-const updateVideoCard = (item: HTMLElement) => {
-  const card = item.querySelector<HTMLElement>(VIDEO_TEXT_CLASS)
-  const videoTitleEl = card?.querySelector<HTMLAnchorElement>('#video-title')
-  const videoCoverEl = item.querySelector<HTMLImageElement>('.yt-core-image')
-
-  if (!videoTitleEl || !videoCoverEl) return
+const updateVideoCard = (card: HTMLElement) => {
+  const videoTitleEl = card.querySelector<HTMLAnchorElement>('#video-title')
   const videoUrl = videoTitleEl?.href
   const videoId = new URL(videoUrl!).searchParams.get('v')
-  const videoTitle = videoTitleEl?.textContent
-  const videoCover = videoCoverEl?.src
-  console.log('🚀 ~ updateVideoCard ~ videoCover:', videoCover)
 
   if (videoUrl?.includes('shorts')) return
 
@@ -65,11 +57,7 @@ const updateVideoCard = (item: HTMLElement) => {
 
     createRoot(container).render(
       <Content
-        video={{
-          videoId: videoId!,
-          videoTitle: videoTitle!,
-          videoCover: videoCover!,
-        }}
+        videoId={videoId!}
         options={globalObjectMap.options!}
         openPreviewPanel={openPreviewPanel}
       />,
@@ -80,9 +68,9 @@ const updateVideoCard = (item: HTMLElement) => {
 }
 
 const insertContentToVideoCards = () => {
-  const videoItems = document.querySelectorAll<HTMLElement>(VIDEO_ITEM_CLASS)
-  videoItems?.forEach((item) => {
-    updateVideoCard(item)
+  const videoCard = document.querySelectorAll<HTMLElement>(VIDEO_CARD_CLASS)
+  videoCard?.forEach((card) => {
+    updateVideoCard(card)
   })
 }
 
@@ -97,7 +85,7 @@ const observer = new MutationObserver((mutations) => {
   mutations.forEach((mutation) => {
     mutation.addedNodes.forEach((node) => {
       if (node instanceof HTMLElement) {
-        const videoItem = node.querySelector(VIDEO_ITEM_CLASS)
+        const videoItem = node.querySelector(VIDEO_CARD_CLASS)
         if (videoItem) {
           updateVideoCard(videoItem as HTMLElement)
         }
