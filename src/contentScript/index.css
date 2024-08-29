@@ -10,28 +10,28 @@
 }
 
 .container {
-  gap: 1rem;
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: start;
 
   align-items: start;
+  gap: 1rem;
+  width: 100%;
 }
 
 .group {
-  width: 100%;
   display: flex;
   gap: 1rem;
+  width: 100%;
 }
 
 .label {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-  font-weight: 500;
   border-radius: 0.36rem;
   background-color: #e0e7e7;
+  padding: 0.5rem 1rem;
   color: #000;
+  font-weight: 500;
+  font-size: 1rem;
 }
 
 .label.error {
@@ -41,42 +41,43 @@
 
 .button {
   flex: 1;
-  border: none;
-  padding: 0.8rem 1.6rem;
-  border-radius: 0.48rem;
-  border-bottom: 2px solid #8fa7a7;
-  background-color: #e0e7e7;
-  cursor: pointer;
-  transition: all 0.3s;
   justify-content: center;
+  transition: all 0.1s;
+  cursor: pointer;
+  border: none;
+  border-bottom: 2px solid #8fa7a7;
+  border-radius: 0.48rem;
+  background-color: #e0e7e7;
+  padding: 0.8rem 1.6rem;
+  height: 3.2rem;
 }
 
 .button:hover {
+  border-bottom: 4px solid #8fa7a7;
   background-color: #e0e7e7;
-  border-bottom: 6px solid #8fa7a7;
 }
 
 .button:active {
+  border-bottom: 3px solid #8fa7a7;
   background-color: #e0e7e7;
-  border-bottom: 4px solid #8fa7a7;
 }
 
 .preview-panel {
   display: flex;
   position: fixed;
-  right: -960px;
-  width: 960px;
   top: 0;
+  right: -960px;
   bottom: 0;
-  padding: 1.6rem;
-  max-width: 100%;
-  background-color: #0336;
-  box-shadow: 0 0 10px 0 #0002;
-  backdrop-filter: blur(10px);
   z-index: 99999;
-  box-sizing: border-box;
-  overflow: auto;
+  backdrop-filter: blur(10px);
   transition: right 0.3s ease;
+  box-sizing: border-box;
+  box-shadow: 0 0 10px 0 #0002;
+  background-color: #0336;
+  padding: 1.6rem;
+  width: 960px;
+  max-width: 100%;
+  overflow: auto;
 }
 
 .preview-panel.active {
@@ -84,13 +85,13 @@
 }
 
 .preview-panel .body {
-  flex: 1;
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: 0.5rem;
-  padding: 1.4rem;
-  background-color: #fffc;
   border-radius: 0.6rem;
+  background-color: #fffc;
+  padding: 1.4rem;
 }
 
 .preview-panel .header {
@@ -100,14 +101,14 @@
 }
 
 .preview-panel .header .title {
-  font-size: 2.4rem;
   font-weight: 700;
+  font-size: 2.4rem;
 }
 
 .preview-panel .header .close {
   pading: 0.4rem;
-  cursor: pointer;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .preview-panel .header .close:hover {
@@ -117,15 +118,15 @@
 
 .preview-panel .video-id {
   margin-left: 1rem;
-  font-size: 1.6rem;
   font-weight: 500;
+  font-size: 1.6rem;
   font-family: monospace;
 }
 
 .preview-panel .content {
   display: flex;
-  flex-direction: column;
   flex: 1;
+  flex-direction: column;
   gap: 1rem;
   margin-top: 1rem;
   overflow-y: auto;
@@ -133,24 +134,24 @@
 
 .preview-panel .content .caption {
   display: flex;
-  gap: 1rem;
   align-items: center;
+  gap: 1rem;
 }
 
 .preview-panel .content .caption .caption-item {
-  font-family: monospace;
-  font-size: 1.3rem;
   border-radius: 0.56rem;
-  padding: 0.4rem 0.8rem;
   background-color: #fffc;
-  font-weight: 500;
+  padding: 0.4rem 0.8rem;
   min-width: 56px;
+  font-weight: 500;
+  font-size: 1.3rem;
+  font-family: monospace;
   text-align: right;
 }
 
 .preview-panel .content .caption .caption-text {
-  font-size: 1.6rem;
   font-weight: 500;
+  font-size: 1.6rem;
 }
 
 .loading {
@@ -159,8 +160,8 @@
 
 .item-with-icon {
   display: flex;
-  gap: 0.4rem;
   align-items: center;
+  gap: 0.4rem;
 }
 
 /* 5.	警告（Warning Color）
