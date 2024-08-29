@@ -27,15 +27,14 @@
 
 .label {
   border-radius: 0.36rem;
-  background-color: #e0e7e7;
+  background-color: #f0f0f0;
   padding: 0.5rem 1rem;
-  color: #000;
   font-weight: 500;
   font-size: 1rem;
 }
 
 .label.error {
-  background-color: #ff6b6b;
+  background-color: #d32f2f;
   color: #fff;
 }
 
@@ -45,21 +44,20 @@
   transition: all 0.1s;
   cursor: pointer;
   border: none;
-  border-bottom: 2px solid #8fa7a7;
+  border-bottom: 2px solid #c00;
   border-radius: 0.48rem;
-  background-color: #e0e7e7;
+  background-color: #f0f0f0cc;
   padding: 0.8rem 1.6rem;
   height: 3.2rem;
+  color: #c00;
 }
 
 .button:hover {
-  border-bottom: 4px solid #8fa7a7;
-  background-color: #e0e7e7;
+  border-bottom: 4px solid #c00;
 }
 
 .button:active {
-  border-bottom: 3px solid #8fa7a7;
-  background-color: #e0e7e7;
+  border-bottom: 3px solid #c00;
 }
 
 .preview-panel {
@@ -90,7 +88,7 @@
   flex-direction: column;
   gap: 0.5rem;
   border-radius: 0.6rem;
-  background-color: #fffc;
+  background-color: #f0f0f0;
   padding: 1.4rem;
 }
 
@@ -112,15 +110,14 @@
 }
 
 .preview-panel .header .close:hover {
-  background-color: #c33;
-  color: #fff;
+  background-color: #d32f2f;
+  color: #f0f0f0;
 }
 
 .preview-panel .video-id {
   margin-left: 1rem;
   font-weight: 500;
   font-size: 1.6rem;
-  font-family: monospace;
 }
 
 .preview-panel .content {
@@ -136,26 +133,28 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  font-size: 1.2rem;
 }
 
 .preview-panel .content .caption .caption-item {
   border-radius: 0.56rem;
-  background-color: #fffc;
+  background-color: #2196f3cc;
   padding: 0.4rem 0.8rem;
   min-width: 56px;
-  font-weight: 500;
-  font-size: 1.3rem;
+  color: #eee;
   font-family: monospace;
   text-align: right;
 }
 
 .preview-panel .content .caption .caption-text {
-  font-weight: 500;
-  font-size: 1.6rem;
+  flex: 1;
+  border-radius: 0.56rem;
+  background-color: #fff;
+  padding: 0.4rem 0.8rem;
 }
 
 .loading {
-  background-color: #eee9;
+  background-color: #f0f0f0;
 }
 
 .item-with-icon {
@@ -163,10 +162,3 @@
   align-items: center;
   gap: 0.4rem;
 }
-
-/* 5.	警告（Warning Color）
-•	橙色 #ffb347：這個暖色調與主色形成對比，用於顯示警告信息。
-6.	錯誤（Error Color）
-•	珊瑚紅 #ff6b6b：這個鮮豔的紅色用於顯示錯誤信息，能夠引起用戶注意。
-7.	信息（Info Color）
-•	天藍色 #5bc0de：這個顏色與主色調保持冷色系的一致性，用於顯示信息提示。 */
