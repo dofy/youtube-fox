@@ -68,7 +68,7 @@ export const ContentDetails: React.FC<ContentProps> = ({ videoId, options, openP
           </div>
         )}
       </div>
-      {options.openaiApiKey ? (
+      {options.s3AccessKey && options.s3SecretKey && options.s3Region && options.s3BucketName ? (
         !loading &&
         video &&
         video.captions.length > 0 && (
@@ -92,7 +92,7 @@ export const ContentDetails: React.FC<ContentProps> = ({ videoId, options, openP
           className="label button"
           onClick={() => chrome.runtime.sendMessage({ type: 'openOptionsPage' })}
         >
-          Please set your OpenAI API Key in the extension options
+          Please set up your S3 credentials first
         </button>
       )}
     </div>

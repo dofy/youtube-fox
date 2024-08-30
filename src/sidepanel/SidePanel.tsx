@@ -3,7 +3,7 @@ import { Copyright } from '../components/Copyright'
 export const SidePanel = () => {
   return (
     <main>
-      <h3>SidePanel Page</h3>
+      <h3>YouTube Fox</h3>
       <Copyright />
     </main>
   )

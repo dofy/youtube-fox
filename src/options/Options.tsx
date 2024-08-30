@@ -8,13 +8,9 @@ export const Options = () => {
   const [userOption, setUserOption] = useState<UserOptions>(DefaultOptions)
 
   useEffect(() => {
-    try {
-      chrome.storage.sync.get(['options'], (result) => {
-        setUserOption(result.options || DefaultOptions)
-      })
-    } catch (e) {
-      console.error(e)
-    }
+    chrome.runtime.sendMessage({ type: 'getOptions' }, (response) => {
+      setUserOption(response.options)
+    })
   }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -44,14 +40,14 @@ export const Options = () => {
       <h2>YouTube Fox</h2>
       <h3>Options</h3>
       <form>
-        <FormControl
+        {/* <FormControl
           isRequired
           label="OpenAI API Key:"
           name="openaiApiKey"
           value={userOption.openaiApiKey}
           onChange={handleChange}
           placeholder="Enter your OpenAI API Key here"
-        />
+        /> */}
         <FormControl
           isRequired
           label="S3 Access Key ID:"
@@ -92,7 +88,7 @@ export const Options = () => {
           onChange={handleChange}
           placeholder="Enter your Prefix Key here"
         />
-        <FormControl
+        {/* <FormControl
           label="System Prompt:"
           type="textarea"
           minHeight={230}
@@ -108,7 +104,7 @@ export const Options = () => {
           onChange={handleChange}
           placeholder='Enter your prompt here. Use "{{subtitle}}" to represent the subtitle.'
           info="The subtitle is: {{subtitle}}"
-        />
+        /> */}
         <div className="button-group">
           <button type="button" onClick={resetUserOptions}>
             Reset to Default Options

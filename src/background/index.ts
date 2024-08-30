@@ -1,3 +1,5 @@
+import { DefaultOptions } from '../contents'
+
 chrome.action.onClicked.addListener(() => {
   chrome.runtime.openOptionsPage()
 })
@@ -10,7 +12,13 @@ chrome.runtime.onMessage.addListener((request, _sender, sendResponse) => {
   switch (request.type) {
     case 'getOptions':
       chrome.storage.sync.get(['options'], (result) => {
-        sendResponse({ message: 'getOptions', options: result.options })
+        sendResponse({
+          message: 'getOptions',
+          options: {
+            ...DefaultOptions,
+            ...result.options,
+          },
+        })
       })
       break
     case 'openOptionsPage':

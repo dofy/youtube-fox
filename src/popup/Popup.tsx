@@ -2,8 +2,8 @@ import { Copyright } from '../components/Copyright'
 
 export const Popup = () => {
   return (
-    <main>
-      <h2>Popup Page</h2>
+    <main className="popup">
+      <h2>YouTube Fox</h2>
       <Copyright />
     </main>
   )

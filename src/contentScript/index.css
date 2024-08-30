@@ -27,7 +27,7 @@
 
 .label {
   border-radius: 0.36rem;
-  background-color: #f0f0f0;
+  background-color: #fff0f0;
   padding: 0.5rem 1rem;
   color: #333;
   font-weight: 500;
@@ -48,7 +48,7 @@
   border: none;
   border-bottom: 2px solid #c00;
   border-radius: 0.48rem;
-  background-color: #f0f0f0cc;
+  background-color: #fff0f0cc;
   padding: 0.8rem 1.6rem;
   height: 3.2rem;
   color: #c00;
@@ -115,6 +115,7 @@
   pading: 0.4rem;
   transition: all 0.3s ease;
   cursor: pointer;
+  border-radius: 0.6rem;
 }
 
 .preview-panel .header .close:hover {
@@ -147,10 +148,10 @@
 
 .preview-panel .content .caption .caption-item {
   border-radius: 0.56rem;
-  background-color: #c009;
+  background-color: #eee9;
   padding: 0.4rem 0.8rem;
   min-width: 56px;
-  color: #eee;
+  color: #666;
   font-family: monospace;
   text-align: right;
 }

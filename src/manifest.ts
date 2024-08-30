@@ -16,9 +16,8 @@ export default defineManifest({
     128: 'img/logo-128.png',
   },
   action: {
-    // default_popup: 'popup.html',
-    // default_popup: '',
-    default_icon: 'img/logo-48.png',
+    default_popup: 'popup.html',
+    default_icon: 'img/logo-128.png',
   },
   options_page: 'options.html',
   devtools_page: 'devtools.html',
@@ -32,9 +31,9 @@ export default defineManifest({
       js: ['src/contentScript/index.tsx'],
     },
   ],
-  // side_panel: {
-  // default_path: 'sidepanel.html',
-  // },
+  side_panel: {
+    default_path: 'sidepanel.html',
+  },
   web_accessible_resources: [
     {
       resources: ['img/logo-16.png', 'img/logo-34.png', 'img/logo-48.png', 'img/logo-128.png'],
