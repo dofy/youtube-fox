@@ -1,7 +1,7 @@
 {
   "name": "youtube-fox",
   "displayName": "YouTube Fox",
-  "version": "1.1.0",
+  "version": "1.2.1",
   "author": "Seven Yu <dofyyu@gmail.com>",
   "description": "An extension to help you to get YouTube captions and save them to S3.",
   "type": "module",

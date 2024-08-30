@@ -42,7 +42,7 @@ export const ContentDetails: React.FC<ContentProps> = ({ videoId, options, openP
   }, [videoId])
 
   return (
-    <div className="container">
+    <div className="container font">
       <div className="group">
         <a
           href="/watch?v=ZbZSe6N_BXs"
@@ -73,12 +73,12 @@ export const ContentDetails: React.FC<ContentProps> = ({ videoId, options, openP
         video &&
         video.captions.length > 0 && (
           <div className="group">
-            <button className="button font item-with-icon" onClick={() => openPreviewPanel(video)}>
+            <button className="button item-with-icon" onClick={() => openPreviewPanel(video)}>
               <FiPrinter />
               Preview Captions
             </button>
             <button
-              className="button font item-with-icon"
+              className="button item-with-icon"
               disabled={saving || saved}
               onClick={saveCaptions}
             >

@@ -33,6 +33,13 @@ const closePreviewPanel = () => {
   previewPanel?.classList.remove('active')
 }
 
+const insertGoogleFont = () => {
+  const link = document.createElement('link')
+  link.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap'
+  link.rel = 'stylesheet'
+  document.head.appendChild(link)
+}
+
 const insertPreviewPanel = () => {
   const previewPanelContainer = document.createElement('div')
   previewPanelContainer.setAttribute('id', 'preview-panel')
@@ -98,6 +105,7 @@ const observer = new MutationObserver((mutations) => {
 chrome.runtime.sendMessage({ type: 'getOptions' }, (response) => {
   globalObjectMap.options = response.options
 
+  insertGoogleFont()
   insertPreviewPanel()
   insertContentToVideoCards()
 
