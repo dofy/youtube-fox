@@ -5,7 +5,6 @@ import { Content } from './Content'
 import { PreviewContent } from './PreviewContent'
 import { PreviewPanel } from './PreviewPanel'
 import './index.css'
-import { DefaultOptions } from '../contents'
 
 const VIDEO_CARD_CLASS = '.text-wrapper.ytd-video-renderer'
 

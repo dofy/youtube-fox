@@ -83,7 +83,7 @@ export const ContentDetails: React.FC<ContentProps> = ({ videoId, options, openP
               onClick={saveCaptions}
             >
               {saved ? <FiCloud /> : <FiSave />}
-              {saving ? 'Saving Captions...' : saved ? 'Captions Saved!' : 'Save Captions to S3'}
+              {saving ? 'Saving Captions...' : saved ? 'Captions Saved!' : 'Save Captions'}
             </button>
           </div>
         )

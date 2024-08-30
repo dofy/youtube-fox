@@ -1,7 +1,6 @@
 import { defineManifest } from '@crxjs/vite-plugin'
 import packageData from '../package.json'
 
-//@ts-ignore
 const isDev = process.env.NODE_ENV == 'development'
 
 export default defineManifest({
@@ -14,13 +13,14 @@ export default defineManifest({
     32: 'img/logo-34.png',
     48: 'img/logo-48.png',
     128: 'img/logo-128.png',
+    512: 'img/logo-512.png',
   },
   action: {
     // default_popup: 'popup.html',
-    default_icon: 'img/logo-128.png',
+    default_icon: 'img/logo-512.png',
   },
   options_page: 'options.html',
-  devtools_page: 'devtools.html',
+  // devtools_page: 'devtools.html',
   background: {
     service_worker: 'src/background/index.ts',
     type: 'module',
@@ -36,11 +36,18 @@ export default defineManifest({
   // },
   web_accessible_resources: [
     {
-      resources: ['img/logo-16.png', 'img/logo-34.png', 'img/logo-48.png', 'img/logo-128.png'],
+      resources: [
+        'img/logo-16.png',
+        'img/logo-34.png',
+        'img/logo-48.png',
+        'img/logo-128.png',
+        'img/logo-512.png',
+      ],
       matches: [],
     },
   ],
-  permissions: ['sidePanel', 'storage'],
+  permissions: ['storage'],
+  // permissions: ['sidePanel', 'storage'],
   // chrome_url_overrides: {
   //   newtab: 'newtab.html',
   // },

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Copyright } from '../components/Copyright'
 import { FormControl } from '../components/FormControl'
+import { PageTitle } from '../components/PageTitle'
 import { DefaultOptions } from '../contents'
 import { UserOptions } from '../types'
-import { PageTitle } from '../components/PageTitle'
 
 export const Options = () => {
   const [userOption, setUserOption] = useState<UserOptions>(DefaultOptions)
@@ -13,8 +13,8 @@ export const Options = () => {
       chrome.runtime.sendMessage({ type: 'getOptions' }, (response) => {
         setUserOption(response.options)
       })
-    } catch (e) {
-      console.error(e)
+    } catch (error) {
+      console.error(error)
     }
   }, [])
 
@@ -24,8 +24,8 @@ export const Options = () => {
       const result = { ...prev, [name]: value }
       try {
         chrome.storage.sync.set({ options: result })
-      } catch (e) {
-        console.error(e)
+      } catch (error) {
+        console.error(error)
       }
       return result
     })
@@ -35,8 +35,8 @@ export const Options = () => {
     setUserOption(DefaultOptions)
     try {
       chrome.storage.sync.set({ options: DefaultOptions })
-    } catch (e) {
-      console.error(e)
+    } catch (error) {
+      console.error(error)
     }
   }
 
