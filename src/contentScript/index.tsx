@@ -43,7 +43,7 @@ const insertGoogleFont = () => {
 const insertPreviewPanel = () => {
   const previewPanelContainer = document.createElement('div')
   previewPanelContainer.setAttribute('id', 'preview-panel')
-  previewPanelContainer.classList.add('preview-panel')
+  previewPanelContainer.classList.add('yf_preview-panel')
   document.body.appendChild(previewPanelContainer)
   createRoot(previewPanelContainer).render(<PreviewPanel closePreviewPanel={closePreviewPanel} />)
 }

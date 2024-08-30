@@ -38,15 +38,16 @@ export const ContentDetails: React.FC<ContentProps> = ({ videoId, options, openP
   }
 
   useEffect(() => {
-    fetchCaptions(videoId)
+    if (options.s3AccessKey && options.s3SecretKey && options.s3Region && options.s3BucketName)
+      fetchCaptions(videoId)
   }, [videoId])
 
   return (
-    <div className="container font">
-      <div className="group">
+    <div className="yf_container yf_noto">
+      <div className="yf_group">
         <a
           href="/watch?v=ZbZSe6N_BXs"
-          className="label item-with-icon"
+          className="yf_label yf_item-with-icon"
           onClick={(evt) => {
             evt.preventDefault()
             navigator.clipboard.writeText(videoId)
@@ -56,13 +57,13 @@ export const ContentDetails: React.FC<ContentProps> = ({ videoId, options, openP
           {videoId}
         </a>
         {loading && (
-          <div className="label loading item-with-icon">
+          <div className="yf_label yf_loading yf_item-with-icon">
             <FiLoader color="#c00" />
             Loading Captions...
           </div>
         )}
         {!loading && video?.captions?.length === 0 && (
-          <div className="label error item-with-icon">
+          <div className="yf_label yf_error yf_item-with-icon">
             <FiCoffee />
             No Captions
           </div>
@@ -72,13 +73,13 @@ export const ContentDetails: React.FC<ContentProps> = ({ videoId, options, openP
         !loading &&
         video &&
         video.captions.length > 0 && (
-          <div className="group">
-            <button className="button item-with-icon" onClick={() => openPreviewPanel(video)}>
+          <div className="yf_group">
+            <button className="yf_button yf_item-with-icon" onClick={() => openPreviewPanel(video)}>
               <FiPrinter />
               Preview Captions
             </button>
             <button
-              className="button item-with-icon"
+              className="yf_button yf_item-with-icon"
               disabled={saving || saved}
               onClick={saveCaptions}
             >
@@ -89,7 +90,7 @@ export const ContentDetails: React.FC<ContentProps> = ({ videoId, options, openP
         )
       ) : (
         <button
-          className="label button"
+          className="yf_label yf_button"
           onClick={() => chrome.runtime.sendMessage({ type: 'openOptionsPage' })}
         >
           Please set up your S3 credentials first

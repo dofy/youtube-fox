@@ -8,7 +8,7 @@ interface PreviewContentProps {
 export const PreviewContent: React.FC<PreviewContentProps> = ({ video }) => {
   return (
     <>
-      <div className="video-info">
+      <div className="yf_video-info">
         <img src={video.cover} className="img-cover" alt={video.title} />
         <div className="video-text">
           <h3>
