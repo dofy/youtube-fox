@@ -1,9 +1,10 @@
 import { Copyright } from '../components/Copyright'
+import { PageTitle } from '../components/PageTitle'
 
 export const Popup = () => {
   return (
     <main className="popup">
-      <h2>YouTube Fox</h2>
+      <PageTitle pageName="Popup" />
       <Copyright />
     </main>
   )

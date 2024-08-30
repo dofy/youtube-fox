@@ -159,13 +159,22 @@ button:focus {
   font-size: 0.7rem;
 }
 
-.copyright {
-  color: #c00;
-  font-weight: 700;
-  font-size: 0.8rem;
-}
-
+/* popup page */
 .popup {
   width: 600px;
   height: 400px;
+}
+
+.copyright {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  color: #c00;
+  font-size: 0.8rem;
+}
+
+.copyright > a {
+  color: #c00;
+  font-weight: 600;
+  font-size: 0.9rem;
 }

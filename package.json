@@ -1,16 +1,17 @@
 {
   "name": "youtube-fox",
   "displayName": "YouTube Fox",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "author": "Seven Yu <dofyyu@gmail.com>",
-  "description": "An extension to help you get YouTube captions.",
+  "description": "An extension to help you to get YouTube captions and save them to S3.",
   "type": "module",
   "license": "MIT",
   "keywords": [
     "chrome-extension",
-    "react",
-    "vite",
-    "create-chrome-ext"
+    "youtube",
+    "caption",
+    "extension",
+    "FlowGPT"
   ],
   "engines": {
     "node": ">=14.18.0"

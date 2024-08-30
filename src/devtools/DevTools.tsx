@@ -1,9 +1,10 @@
 import { Copyright } from '../components/Copyright'
+import { PageTitle } from '../components/PageTitle'
 
 export const DevTools = () => {
   return (
     <main>
-      <h3>DevTools Page</h3>
+      <PageTitle pageName="DevTools" />
       <Copyright />
     </main>
   )

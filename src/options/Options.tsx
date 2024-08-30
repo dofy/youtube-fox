@@ -3,14 +3,19 @@ import { Copyright } from '../components/Copyright'
 import { FormControl } from '../components/FormControl'
 import { DefaultOptions } from '../contents'
 import { UserOptions } from '../types'
+import { PageTitle } from '../components/PageTitle'
 
 export const Options = () => {
   const [userOption, setUserOption] = useState<UserOptions>(DefaultOptions)
 
   useEffect(() => {
-    chrome.runtime.sendMessage({ type: 'getOptions' }, (response) => {
-      setUserOption(response.options)
-    })
+    try {
+      chrome.runtime.sendMessage({ type: 'getOptions' }, (response) => {
+        setUserOption(response.options)
+      })
+    } catch (e) {
+      console.error(e)
+    }
   }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -37,8 +42,7 @@ export const Options = () => {
 
   return (
     <main className="container">
-      <h2>YouTube Fox</h2>
-      <h3>Options</h3>
+      <PageTitle pageName="Options" />
       <form>
         {/* <FormControl
           isRequired

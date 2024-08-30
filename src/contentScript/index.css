@@ -112,10 +112,10 @@
 }
 
 .preview-panel .header .close {
-  pading: 0.4rem;
   transition: all 0.3s ease;
   cursor: pointer;
   border-radius: 0.6rem;
+  padding: 0.4rem;
 }
 
 .preview-panel .header .close:hover {

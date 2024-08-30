@@ -1,9 +1,10 @@
 import { Copyright } from '../components/Copyright'
+import { PageTitle } from '../components/PageTitle'
 
 export const SidePanel = () => {
   return (
     <main>
-      <h3>YouTube Fox</h3>
+      <PageTitle />
       <Copyright />
     </main>
   )
