@@ -1,5 +1,5 @@
 import { PutObjectCommand, S3Client } from '@aws-sdk/client-s3'
-import { DefaultOptions } from '../contents'
+import { DefaultOptions } from '../constants'
 import { UserOptions } from '../types'
 
 let userOptions: UserOptions

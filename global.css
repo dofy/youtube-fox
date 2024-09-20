@@ -161,6 +161,10 @@ button:focus {
   height: 400px;
 }
 
+.hidden {
+  display: none;
+}
+
 .copyright {
   display: flex;
   align-items: baseline;

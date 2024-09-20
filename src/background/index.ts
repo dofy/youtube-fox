@@ -1,4 +1,4 @@
-import { DefaultOptions } from '../contents'
+import { DefaultOptions } from '../constants'
 
 chrome.action.onClicked.addListener(() => {
   chrome.runtime.openOptionsPage()
