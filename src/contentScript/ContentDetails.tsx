@@ -93,7 +93,7 @@ export const ContentDetails: React.FC<ContentProps> = ({ videoId, options, openP
           className="yf_label yf_button"
           onClick={() => chrome.runtime.sendMessage({ type: 'openOptionsPage' })}
         >
-          Please set up your S3 credentials first
+          Please complete the <strong>Options</strong> first
         </button>
       )}
     </div>

@@ -1,11 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap');
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   color: #333;
-  font-family: 'Noto Sans SC', sans-serif;
+  /* font-family: 'Noto Sans SC', sans-serif; */
+  font-family: 'SUSE', sans-serif;
   font-optical-sizing: auto;
 }
 
@@ -142,16 +144,18 @@ button:focus {
 .form-control > small {
   color: #ff0000;
   font-style: italic;
+  font-weight: 700;
   font-size: 0.8rem;
 }
 
 .form-control > small::before {
   margin-right: 0.4rem;
-  border: 1px solid #ff0000;
+  border: 2px solid #ff0000;
   border-radius: 50%;
-  padding: 0.02rem 0.42rem;
+  padding: 0.02rem 0.41rem;
   content: 'i';
   font-style: normal;
+  font-weight: 700;
   font-size: 0.7rem;
 }
 

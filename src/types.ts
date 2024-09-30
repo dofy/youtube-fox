@@ -1,3 +1,16 @@
+export type Language =
+  | 'en'
+  | 'ja'
+  | 'es'
+  | 'fr'
+  | 'de'
+  | 'it'
+  | 'ko'
+  | 'pt'
+  | 'ru'
+  | 'zh-CN'
+  | 'zh-TW'
+
 export type UserOptions = {
   // amazon s3
   s3AccessKey: string
@@ -15,4 +28,6 @@ export type UserOptions = {
   wpApiUrl: string
   wpUsername: string
   wpAppPassword: string
+  // selected languages
+  selectedLanguages: Language[]
 }

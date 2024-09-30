@@ -1,3 +1,5 @@
+import { UserOptions } from '../types'
+
 export const BLOG_SYSTEM_PROMPT = `You are a professional content writer who is tasked with creating a 700 word, SEO friendly blog post in markdown format based on a video subtitle.
 
 You will be given a text of the subtitles and then write a blog post in markdown format and based on the content of the subtitles. The blog post should be useful, actionable and provide suggestions.`
@@ -26,7 +28,7 @@ export const LanguageMap = {
   'zh-TW': '繁體中文',
 }
 
-export const DefaultOptions = {
+export const DefaultOptions: UserOptions = {
   s3AccessKey: '',
   s3SecretKey: '',
   s3Region: 'us-west-1',
@@ -40,4 +42,5 @@ export const DefaultOptions = {
   wpApiUrl: '',
   wpUsername: '',
   wpAppPassword: '',
+  selectedLanguages: ['en', 'ja', 'zh-CN'],
 }
